@@ -6,6 +6,7 @@
           <th scope="col">ID</th>
           <th scope="col">Url Image</th>
           <th scope="col">Name</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -13,8 +14,13 @@
           <th scope="row">{{ cate.id }}</th>
           <td>{{ cate.image }}</td>
           <td>{{ cate.name }}</td>
+          <td>
+                <button class="btn btn-primary" @click="detail(cate.id)">
+                  View
+                </button>
+            <button class="btn btn-danger">Delete</button>
+          </td>
         </tr>
-      
       </tbody>
     </table>
   </div>
@@ -39,6 +45,9 @@ export default {
       }).catch(error => {
         this.errors = error.response.data.errors.name
       })
+    },
+    detail(categoryId) {
+      this.$router.push({name: 'ViewCategory', params: {id: categoryId}})
     }
   }
 };
