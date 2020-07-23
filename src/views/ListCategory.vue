@@ -18,7 +18,7 @@
                 <button class="btn btn-primary" @click="detail(cate.id)">
                   View
                 </button>
-            <button class="btn btn-danger">Delete</button>
+            <button data-confirm="You sure?" class="btn btn-danger" @click="deleteCategory(cate.id)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -45,6 +45,14 @@ export default {
       }).catch(error => {
         this.errors = error.response.data.errors.name
       })
+    },
+    deleteCategory(categoryId) {
+      if (confirm("You sure?")) {
+        axios.delete("https://5d2c2c4a8c900700149720a5.mockapi.io/categories/" + categoryId).then(response => {
+          this.list_cateogry.splice(categoryId, 1);
+          window.location.reload();
+        })
+      }
     },
     detail(categoryId) {
       this.$router.push({name: 'ViewCategory', params: {id: categoryId}})
