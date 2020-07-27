@@ -5,12 +5,13 @@ import App from './App'
 import router from './router'
 import 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import store from './store/store';
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App},
   template: '<App/>'
 })
