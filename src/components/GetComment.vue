@@ -10,6 +10,7 @@
             placeholder="Please enter your comment">
         </div>
         <button class="btn btn-success float-xs-right" type="submit">Comment</button>
+        <span style="color:red" v-for="(error, index) in errors" v-bind:key="index">{{error.body}}</span>
     </form>
   </div>
 </template>
@@ -20,6 +21,9 @@ export default {
   computed: {
     newComment() {
       return this.$store.getters.newComment
+    },
+    errors () {
+      return this.$store.getters.errors
     }
   },
   methods: {

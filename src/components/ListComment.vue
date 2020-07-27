@@ -35,6 +35,9 @@ export default {
       },
       newComment () {
           return this.$store.getters.newComment
+      },
+      errors () {
+          return this.$store.getters.errors
       }
   }
 };
